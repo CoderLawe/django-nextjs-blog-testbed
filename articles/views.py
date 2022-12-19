@@ -10,6 +10,8 @@ from django.db.models import Q
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article, Comments, Admin, Newsletter, Carousel
+from django_nextjs.render import render_nextjs_page_sync
+
 from . import forms
 from bs4 import BeautifulSoup
 import requests
@@ -19,6 +21,13 @@ import csv
 
 
 # source = requests.get("https://www.caranddriver.com/reviews/").text
+
+
+# def index(request):
+#     return render_nextjs_page_sync(request)    
+
+def index(request):
+    return render(request, 'articles/out/index.html')
 
 
 class AdminRequiredMixin(object):
